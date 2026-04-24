@@ -1,0 +1,134 @@
+{
+  "d2c_mode": "software",
+  "capture_config_snapshot": {
+    "output_root": "D:\\3D projects\\OrbbecDataScripts\\multi_metal\\scene1",
+    "color_dir": "D:\\3D projects\\OrbbecDataScripts\\multi_metal\\scene1\\color",
+    "depth_dir": "D:\\3D projects\\OrbbecDataScripts\\multi_metal\\scene1\\depth",
+    "stream": {
+      "color": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "format": "OBFormat.RGB"
+      },
+      "depth": {
+        "width": 640,
+        "height": 576,
+        "fps": 30,
+        "format": "OBFormat.Y16"
+      }
+    },
+    "pipeline": {
+      "try_nfov_unbinned_depth_mode": true,
+      "enable_frame_sync": true,
+      "try_hardware_d2c": true,
+      "warmup_frames": 30,
+      "wait_for_frames_ms": 100
+    }
+  },
+  "color": {
+    "fx": 1127.4364013671875,
+    "fy": 1127.4508056640625,
+    "cx": 953.9781494140625,
+    "cy": 533.11962890625,
+    "width": 1920,
+    "height": 1080,
+    "distortion": {
+      "k1": 0.07972395420074463,
+      "k2": -0.10664264857769012,
+      "k3": 0.044052425771951675,
+      "k4": 0.0,
+      "k5": 0.0,
+      "k6": 0.0,
+      "p1": -3.616844696807675e-05,
+      "p2": -4.65954071842134e-05
+    },
+    "raw_intrinsic": {
+      "fx": 1127.4364013671875,
+      "fy": 1127.4508056640625,
+      "cx": 953.9781494140625,
+      "cy": 533.11962890625,
+      "width": 1920,
+      "height": 1080
+    },
+    "raw_distortion": {
+      "k1": 0.07972395420074463,
+      "k2": -0.10664264857769012,
+      "k3": 0.044052425771951675,
+      "k4": 0.0,
+      "k5": 0.0,
+      "k6": 0.0,
+      "p1": -3.616844696807675e-05,
+      "p2": -4.65954071842134e-05
+    }
+  },
+  "depth_scale_sample": 1.0,
+  "camera_param_full": {
+    "depth_distortion": {
+      "k1": 13.070221900939941,
+      "k2": 6.6428751945495605,
+      "k3": 0.2515314221382141,
+      "k4": 13.386115074157715,
+      "k5": 11.050394058227539,
+      "k6": 1.5516351461410522,
+      "p1": 8.047658775467426e-05,
+      "p2": 2.6309413442504592e-05
+    },
+    "depth_intrinsic": {
+      "cx": 319.0528259277344,
+      "cy": 345.9713134765625,
+      "fx": 504.4560241699219,
+      "fy": 504.4699401855469,
+      "height": 576,
+      "width": 640
+    },
+    "rgb_distortion": {
+      "k1": 0.07972395420074463,
+      "k2": -0.10664264857769012,
+      "k3": 0.044052425771951675,
+      "k4": 0.0,
+      "k5": 0.0,
+      "k6": 0.0,
+      "p1": -3.616844696807675e-05,
+      "p2": -4.65954071842134e-05
+    },
+    "rgb_intrinsic": {
+      "cx": 953.9781494140625,
+      "cy": 533.11962890625,
+      "fx": 1127.4364013671875,
+      "fy": 1127.4508056640625,
+      "height": 1080,
+      "width": 1920
+    },
+    "transform": {
+      "rot": [
+        [
+          0.9939654469490051,
+          0.001268952852115035,
+          0.004562954884022474
+        ],
+        [
+          -0.001761396648362279,
+          0.9939749240875244,
+          0.10959332436323166
+        ],
+        [
+          -0.004396393895149231,
+          -0.10960013419389725,
+          0.9939660429954529
+        ]
+      ],
+      "transform": [
+        -32.473609924316406,
+        -1.2288463115692139,
+        2.818216323852539
+      ]
+    }
+  },
+  "notes": [
+    "color 为摘要字段；camera_param_full 为有限深度、防环的 SDK 结构展开（避免 pybind 对象无限递归）。",
+    "depth_mm ≈ uint16_raw * depth_scale；depth_scale_sample 为启动时采样值。",
+    "d2c_mode: hardware=管线内 OBAlignMode.HW_MODE；software=OBAlignMode.DISABLE + AlignFilter(COLOR)，",
+    "与 Orbbec SDK v2 文档 §4.8.2 及 examples/sync_align.py 一致（pipeline.start 后创建 AlignFilter）。"
+  ]
+}

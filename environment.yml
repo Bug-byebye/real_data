@@ -1,0 +1,16 @@
+# Femto Bolt 基准采集环境（conda）
+# 创建: conda env create -f environment.yml
+# 激活: conda activate orbbec-benchmark
+name: orbbec-benchmark
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - opencv
+  - pyyaml
+  - pip
+  - pip:
+      # Windows 下请按官方文档安装与 Python 版本匹配的 pyorbbecsdk  wheel（pip/离线包）
+      # 若 pip 源无对应包，请从 Orbbec 发布页获取后: pip install 路径\pyorbbecsdk-xxx.whl
+      - pyorbbecsdk
